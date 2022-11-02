@@ -1,0 +1,19 @@
+{
+  "name": "unittesting",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.2.0"
+  },
+  "dependencies": {
+    "@lambdatest/node-rest-client": "^1.0.5",
+    "selenium-webdriver": "^4.5.0"
+  }
+}

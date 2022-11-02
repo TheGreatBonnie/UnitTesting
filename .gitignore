@@ -1,0 +1,4 @@
+.node_modules
+.lambda_api.log
+.package-log.json
+.package.json
