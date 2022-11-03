@@ -11,30 +11,52 @@ const AutomationClient = LambdaTestRestClient.AutomationClient({
   username,
   accessKey
 });
-const capabilities = {
-  "browserName": "Chrome",
+
+const chromeWindowsCapability = {
+	"browserName": "Chrome",
 	"browserVersion": "105.0",
 	"LT:Options": {
 		"username": "Username",
 		"accessKey": "Access Key",
 		"platformName": "Windows 10",
-		"project": "Unit Testing",
-		"selenium_version": "4.0.0",
-		"w3c": true
+		"project": "Untitled",
+		"w3c": true,
+		"plugin": "node_js-node_js"
 	}
-};
+}
+
+const SafariMacosCapability = {
+	"browserName": "Safari",
+	"browserVersion": "16.0",
+	"LT:Options": {
+		"username": "Username",
+		"accessKey": "Access Key",
+		"platformName": "MacOS Ventura",
+		"project": "Untitled",
+		"w3c": true,
+		"plugin": "node_js-node_js"
+	}
+}
+
+const firefoxWindowsCapability = {
+	"browserName": "Firefox",
+	"browserVersion": "106.0",
+	"LT:Options": {
+		"username": "Username",
+		"accessKey": "Access Key",
+		"platformName": "Windows 11",
+		"project": "Untitled",
+		"w3c": true,
+		"plugin": "node_js-node_js"
+	}
+}
 
 const getElementById = async (driver, id, timeout = 8000) => {
     const el = await driver.wait(until.elementLocated(By.id(id)), timeout);
     return await driver.wait(until.elementIsVisible(el), timeout);
 };
 
-const getElementByName = async (driver, name, timeout = 8000) => {
-  const el = await driver.wait(until.elementLocated(By.name(name)), timeout);
-  return await driver.wait(until.elementIsVisible(el), timeout);
-};
-
-const getElementByXpath = async (driver, xpath, timeout = 10000) => {
+const getElementByXpath = async (driver, xpath, timeout = 8000) => {
   const el = await driver.wait(until.elementLocated(By.xpath(xpath)), timeout);
   return await driver.wait(until.elementIsVisible(el), timeout);
 };
@@ -48,7 +70,7 @@ describe('webdriver', () => {
       .usingServer(
         'https://' + username + ':' + accessKey + '@hub.lambdatest.com/wd/hub'
       )
-      .withCapabilities(capabilities)
+      .withCapabilities(chromeWindowsCapability)
       .build();
     await driver.getSession().then(function(session) {
       sessionId = session.id_;
@@ -166,7 +188,7 @@ describe('webdriver', () => {
 
       const Email = await getElementById(driver, 'input-email');
       await Email.clear();
-      await Email.sendKeys("jdoe@example.com");
+      await Email.sendKeys("jdoe1@example.com");
 
       const Telephone = await getElementById(driver, 'input-telephone');
       await Telephone.clear();
